@@ -199,6 +199,7 @@ const AddToCart = () => {
                 >
                     <img src="icon/cart.svg" alt="" className="mr-2 h-6 w-6" />
                     <span>Cart</span>
+                    <span>10</span>
                     <svg
                         className="-mr-1 ml-2 h-5 w-5"
                         xmlns="http://www.w3.org/2000/svg"

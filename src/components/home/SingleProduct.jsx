@@ -37,9 +37,9 @@ const SingleProduct = ({ data }) => {
           {cart.some((p) => p.id === data.id) ? (
             <button
               onClick={() => dispatch({
-                  type: "REMOVE_FROM_CART",
-                  payload: data
-                })
+                type: "REMOVE_FROM_CART",
+                payload: data
+              })
               }
               className="mt-2 rounded-md bg-red-600 px-4 py-1 text-white hover:bg-red-700">
               Remove from cart
@@ -47,11 +47,11 @@ const SingleProduct = ({ data }) => {
           ) : (
             <button
               disabled={!data.inStock}
-                onClick={() => dispatch({
-                  type: "ADD_TO_CART",
-                  payload: data
-                })
-                }
+              onClick={() => dispatch({
+                type: "ADD_TO_CART",
+                payload: data
+              })
+              }
               className={`${data.inStock ? "bg-green-600" : "bg-gray-400"
                 } mt-2 rounded-md px-4 py-1 text-white hover:bg-opacity-75`}
             >

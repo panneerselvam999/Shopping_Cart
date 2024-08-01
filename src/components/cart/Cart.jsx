@@ -71,24 +71,25 @@ const Cart = () => {
 
   const [totalAmount, setTotalAmount] = useState(0);
 
-
-
   // Calculate total amount whenever the cart changes
   useEffect(() => {
-    const calculateTotal = () => {
-      const total = cart.reduce((acc, { price }) => acc + parseInt(price), 0);
-      setTotalAmount(total);
-    };
-    calculateTotal();
+    // const calculateTotal = () => {
+    const total = cart.reduce(
+      (acc, curr) => acc + Number(curr.price) * curr.qty,
+      0,
+    );
+    setTotalAmount(total);
+    // };
+    // calculateTotal();
   }, [cart]);
 
   return (
     <div className="flex">
-      <div className=" flex w-3/4 flex-col">
-        {cart.map(({ image, name, price, id, ratings }) => (
+      <div className="flex w-3/4 flex-col">
+        {cart.map(({ image, name, price, id, ratings, qty, inStock }) => (
           <div
             key={id}
-            className="my-2 lg:flex items-center justify-between border-2"
+            className="my-2 items-center justify-between border-2 lg:flex"
           >
             <div>
               <img src={image} alt={name} className="aspect-video h-24" />
@@ -107,6 +108,25 @@ const Cart = () => {
                   </span>
                 ))}
               </div>
+            </div>
+            <div>
+              <select
+                value={qty}
+                onChange={(e) =>
+                  dispatch({
+                    type: "CHANGE_CART_QTY",
+                    payload: {
+                      id,
+                      qty: e.target.value,
+                    },
+                  })
+                }
+                className="w-60 border-2 px-6 py-1"
+              >
+                {[...Array(inStock).keys()].map((x) => (
+                  <option key={x + 1}>{x + 1}</option>
+                ))}
+              </select>
             </div>
             <div>
               <button
@@ -130,7 +150,7 @@ const Cart = () => {
         <h2>Total Products: {cart.length}</h2>
         <span>Total Amount: ₹{totalAmount}</span>
         <div>
-          <button className="px-4 py-2 bg-blue-600 rounded-md">
+          <button className="rounded-md bg-blue-600 px-4 py-2">
             Proceed to Checkout
           </button>
         </div>

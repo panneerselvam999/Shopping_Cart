@@ -241,7 +241,7 @@ const AddToCart = () => {
                         <div className="px-5">
                             <button
                                 type="submit"
-                                class="inline-flex w-full justify-center rounded border border-transparent bg-green-600 px-4 py-1 text-xl font-medium text-white transition-colors hover:bg-green-700"
+                                className="inline-flex w-full justify-center rounded border border-transparent bg-green-600 px-4 py-1 text-xl font-medium text-white transition-colors hover:bg-green-700"
                             >
                                 Go to Cart
                             </button>{" "}

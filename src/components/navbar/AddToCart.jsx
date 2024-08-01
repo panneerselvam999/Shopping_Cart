@@ -118,6 +118,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { CartState } from "../../context/Context";
 import { MdDeleteForever } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 // Custom hook to detect outside clicks and close the dropdown
 const useOutsideClickHandler = (handler) => {
@@ -225,13 +226,16 @@ const AddToCart = () => {
                                         </div>
                                     </div>
                                 ))}
-                                <div className="px-5">
-                                    <button
-                                        type="button"
-                                        className="inline-flex w-full justify-center rounded border border-transparent bg-green-600 px-4 py-1 text-xl font-medium text-white transition-colors hover:bg-green-700"
-                                    >
-                                        Go to Cart
-                                    </button>
+                                <div className="px-5 border-2">
+                                    <Link to={"/cart"}
+                                        onClick={() => setIsOpen(false)}>
+                                        <button
+                                            type="button"
+                                            className="inline-flex w-fit  justify-center rounded border border-transparent bg-green-600 px-4 py-1 text-xl font-medium text-white transition-colors hover:bg-green-700"
+                                        >
+                                            Go to Cart
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                         ) : (

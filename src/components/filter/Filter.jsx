@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import Rating from './Ratting';
-
+import React from "react";
+import Rating from "./Ratting";
+import { CartState } from "../../context/Context";
 
 const Filter = () => {
-    const [rate, setRate] = useState(0);
+    const {
+        productState: { byStock, byFastDelivery, sort, byRating, searchQuery },
+        productDispatch,
+    } = CartState();
+
+    console.log(byStock, byFastDelivery, byRating, searchQuery, sort);
 
     const clearFilters = () => {
-        // Reset filters to default values
-        setRate(0);
-        // Add logic to reset other filters if needed
+        productDispatch({ type: "CLEAR_FILTERS" });
     };
 
     return (
@@ -18,33 +21,81 @@ const Filter = () => {
             </div>
             <div className="flex flex-col gap-5">
                 <div className="flex items-center gap-4">
-                    <input type="radio" id="ascending" name="sort" />
+                    <input
+                        type="radio"
+                        id="ascending"
+                        name="sort"
+                        onChange={() =>
+                            productDispatch({
+                                type: "SORT_BY_PRICE",
+                                payload: "lowToHigh",
+                            })
+                        }
+                        checked={sort === "lowToHigh"}
+                    />
                     <label htmlFor="ascending">Ascending</label>
                 </div>
                 <div className="flex items-center gap-4">
-                    <input type="radio" id="descending" name="sort" />
+                    <input
+                        type="radio"
+                        id="descending"
+                        name="sort"
+                        onChange={() =>
+                            productDispatch({
+                                type: "SORT_BY_PRICE",
+                                payload: "highToLow",
+                            })
+                        }
+                        checked={sort === "highToLow"}
+                    />
                     <label htmlFor="descending">Descending</label>
                 </div>
                 <div className="flex items-center gap-4">
-                    <input type="checkbox" id="oos" />
+                    <input
+                        type="checkbox"
+                        id="oos"
+                        onChange={() =>
+                            productDispatch({
+                                type: "FILTER_BY_STOCK",
+                            })
+                        }
+                        checked={byStock}
+                    />
                     <label htmlFor="oos">Include Out of Stock</label>
                 </div>
                 <div className="flex items-center gap-4">
-                    <input type="checkbox" id="fast" />
+                    <input
+                        type="checkbox"
+                        id="fast"
+                        onChange={() =>
+                            productDispatch({
+                                type: "FILTER_BY_DELIVERY",
+                            })
+                        }
+                        checked={byFastDelivery}
+                    />
                     <label htmlFor="fast">Fast Delivery Only</label>
                 </div>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex items-center gap-2">
                 <div>
                     <span>Rating:</span>
                 </div>
                 <div>
-                    <Rating rating={rate} onClick={setRate} />
+                    <Rating
+                        rating={byRating}
+                        onClick={(i) =>
+                            productDispatch({
+                                type: "FILTER_BY_RATING",
+                                payload: i,
+                            })
+                        }
+                    />
                 </div>
             </div>
             <div>
                 <button
-                    className="px-5 py-2 bg-slate-400 mx-3"
+                    className="mx-3 bg-slate-400 px-5 py-2"
                     onClick={clearFilters}
                     aria-label="Clear filter"
                 >

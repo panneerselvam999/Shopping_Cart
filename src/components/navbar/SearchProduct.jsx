@@ -1,6 +1,9 @@
 import React from "react";
+import { CartState } from "../../context/Context";
 
 const SearchProduct = () => {
+    const { productDispatch } = CartState();
+
     return (
         <div>
             <div className="relative">
@@ -9,6 +12,12 @@ const SearchProduct = () => {
                     id="search"
                     type="text"
                     placeholder="Search a product"
+                    onChange={(e) =>
+                        productDispatch({
+                            type: "FILTER_BY_SEARCH",
+                            payload: e.target.value,
+                        })
+                    }
                 />
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <svg

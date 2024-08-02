@@ -17,7 +17,7 @@ const Filter = () => {
     return (
         <section className="px-6 py-2">
             <div>
-                <h4>Filter Products</h4>
+                <h4>Total Products: {}</h4>
             </div>
             <div className="flex flex-col gap-5">
                 <div className="flex items-center gap-4">
@@ -61,7 +61,7 @@ const Filter = () => {
                         }
                         checked={byStock}
                     />
-                    <label htmlFor="oos">Include Out of Stock</label>
+                    <label htmlFor="oos">Without Out of Stock</label>
                 </div>
                 <div className="flex items-center gap-4">
                     <input

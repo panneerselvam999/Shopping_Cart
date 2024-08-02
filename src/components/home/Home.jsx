@@ -17,7 +17,7 @@ const Home = () => {
                 sort === "lowToHigh" ? a.price - b.price : b.price - a.price,
             );
         }
-        if (!byStock) {
+        if (byStock) {
             sortedProducts = sortedProducts.filter((prod) => prod.inStock);
         }
 
@@ -39,6 +39,8 @@ const Home = () => {
 
         return sortedProducts;
     };
+    console.log(transformProducts().length);
+
 
     return (
         <div className="flex">

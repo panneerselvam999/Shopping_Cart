@@ -2,7 +2,12 @@ import React from "react";
 import { CartState } from "../../context/Context";
 
 const SearchProduct = () => {
-    const { productDispatch } = CartState();
+    const { productState, productDispatch } = CartState();
+    const clearSearchBar = () => {
+        productDispatch({
+            type: "CLEAR_SEARCH_BAR",
+        });
+    };
 
     return (
         <div>
@@ -12,6 +17,7 @@ const SearchProduct = () => {
                     id="search"
                     type="text"
                     placeholder="Search a product"
+                    value={productState.searchQuery != null ? productState.searchQuery : ""}
                     onChange={(e) =>
                         productDispatch({
                             type: "FILTER_BY_SEARCH",
@@ -35,11 +41,10 @@ const SearchProduct = () => {
                         />
                     </svg>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3" onClick={() => {
-                    productDispatch({
-                        type: "CLEAR_SEARCH_BAR"
-                    })
-                }}>
+                <div
+                    className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3"
+                    onClick={clearSearchBar}
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-5 w-5 text-gray-400 hover:text-gray-500"

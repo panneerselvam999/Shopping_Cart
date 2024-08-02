@@ -8,7 +8,7 @@ const Filter = () => {
         productDispatch,
     } = CartState();
 
-    console.log(byStock, byFastDelivery, byRating, searchQuery, sort);
+    // console.log(byStock, byFastDelivery, byRating, searchQuery, sort);
 
     const clearFilters = () => {
         productDispatch({ type: "CLEAR_FILTERS" });

@@ -35,7 +35,11 @@ const SearchProduct = () => {
                         />
                     </svg>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3">
+                <div className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3" onClick={() => {
+                    productDispatch({
+                        type: "CLEAR_SEARCH_BAR"
+                    })
+                }}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-5 w-5 text-gray-400 hover:text-gray-500"

@@ -39,6 +39,10 @@ export const productReducer = (state, action) => {
                 byRating: 0,
                 searchQuery: "",
             };
+        case "CLEAR_SEARCH_BAR":
+            return {
+                searchQuery: "",
+            };
         default:
             break;
     }

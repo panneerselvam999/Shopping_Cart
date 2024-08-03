@@ -41,18 +41,36 @@ const Home = () => {
     };
 
 
+    // return (
+    //     <section className="flex border-2 border-red-800 relative mt-16">
+    //         <div className=" sticky top-16 ">
+    //             <Filter />
+    //         </div>
+    //         <div className="grid gap-4 border-2 border-black sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    //             {transformProducts().map((data) => (
+    //                 <SingleProduct data={data} key={data.id} />
+    //             ))}
+    //         </div>
+    //     </section>
+    // );
     return (
-        <div className="flex">
-            <div>
+        <section className="flex relative mt-16 w-full">
+            {/* <div className=" sticky top-16 pt-1 h-full bg-green-300 ">
+                <div className="">
+                    <Filter />
+                </div>
+            </div> */}
+            <div className="  pt-1 h-full ">
                 <Filter />
             </div>
-            <div className="grid gap-4 border-2 border-black sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid flex-grow gap-4 border-l-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  overflow-auto p-5">
                 {transformProducts().map((data) => (
                     <SingleProduct data={data} key={data.id} />
                 ))}
             </div>
-        </div>
+        </section>
     );
+
 };
 
 export default Home;

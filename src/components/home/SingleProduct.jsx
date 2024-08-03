@@ -26,9 +26,11 @@ const SingleProduct = ({ data }) => {
 
                     <span className="text-sm text-gray-600">
                         {data.fastDelivery ? ( 
-                            <img src="icon/fast.svg" alt="Fast delivery" className="w-5 text-green-50" />
+                            <span>(F)</span>
+                            // <img src="icon/fast.svg" alt="Fast delivery" className="w-5 text-green-50" />
                         ) : (
-                            <img src="icon/slow.svg" alt="Slow delivery" className="w-5 text-red-500" />
+                            <span>(S)</span>
+                            // <img src="icon/slow.svg" alt="Slow delivery" className="w-5 text-red-500" />
                         )}
                     </span>
                 </div>

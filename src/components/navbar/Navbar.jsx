@@ -20,7 +20,7 @@ const Navbar = () => {
                 <Link to={"/"} className="hidden md:block">
                     Shopping Cart
                 </Link>
-                <Link to={"/"} className="block pr-4 xl:hidden" onClick={
+                <Link to={"/"} className="block pr-4 md:hidden" onClick={
                     // () => console.log("show filters")
                     () => productDispatch({
                         type: "SHOW_FILTER",

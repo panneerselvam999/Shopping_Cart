@@ -55,7 +55,7 @@ const Home = () => {
                 <Filter />
             </div> */}
       <div
-              className={`absolute w-fit pt-1 sm:h-full ${showFilter ? "left-0 duration-700" : "-left-80 duration-700"} md:right-80 `}
+              className={`absolute md:static w-fit pt-1 sm:h-full ${showFilter ? "left-0 duration-700" : "-left-80 duration-700"} md:right-80 `}
       >
         <Filter />
       </div>

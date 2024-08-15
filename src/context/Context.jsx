@@ -6,7 +6,7 @@ export const Cart = createContext();
 // faker.seed(99)
 
 const Context = ({ children }) => {
-    const products = [...Array(10)].map(() => ({
+    const products = [...Array(5)].map(() => ({
         id: faker.string.uuid(),
         name: faker.commerce.productName(),
         price: faker.commerce.price(),
@@ -28,7 +28,9 @@ const Context = ({ children }) => {
         byRating: 0,
         searchQuery: "",
         sort: "",
+        showFilter: false
     });
+
 
     return <Cart.Provider value={{ state, dispatch, productState, productDispatch }}>{children}</Cart.Provider>;
 };

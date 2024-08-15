@@ -13,13 +13,13 @@ const Filter = () => {
     };
 
     return (
-        <section className="px-3 py-2  w-60 ">
-            <div className="border-2 rounded-md p-3">
+        <section className="p-3  w-60  bg-slate-600 text-white rounded-r-lg mt-5">
+            <div className="border-2 border-white rounded-md p-3">
                 <div>
                     <h4 className="text-xl mb-6">Filters:</h4>
                 </div>
                 <div className="flex flex-col gap-5 ">
-                    <div className="flex items-center gap-4 border-b">
+                    <div className="flex items-center gap-4 border-b border-b-white">
                         <input
                             type="radio"
                             id="ascending"
@@ -34,7 +34,7 @@ const Filter = () => {
                         />
                         <label htmlFor="ascending">Ascending</label>
                     </div>
-                    <div className="flex items-center gap-4 border-b">
+                    <div className="flex items-center gap-4 border-b border-b-white">
                         <input
                             type="radio"
                             id="descending"
@@ -49,7 +49,7 @@ const Filter = () => {
                         />
                         <label htmlFor="descending">Descending</label>
                     </div>
-                    <div className="flex items-center gap-4 border-b">
+                    <div className="flex items-center gap-4 border-b border-b-white">
                         <input
                             type="checkbox"
                             id="oos"
@@ -62,7 +62,7 @@ const Filter = () => {
                         />
                         <label htmlFor="oos">Without Out of Stock</label>
                     </div>
-                    <div className="flex items-center gap-4 border-b">
+                    <div className="flex items-center gap-4 border-b border-b-white">
                         <input
                             type="checkbox"
                             id="fast"
@@ -75,7 +75,7 @@ const Filter = () => {
                         />
                         <label htmlFor="fast">Fast Delivery Only</label>
                     </div>
-                    <div className="flex items-center gap-2 border-b">
+                    <div className="flex items-center gap-2 border-b border-b-white">
                         <div>
                             <span>Rating:</span>
                         </div>

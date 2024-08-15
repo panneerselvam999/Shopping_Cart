@@ -43,6 +43,8 @@ export const productReducer = (state, action) => {
             return {
                 searchQuery: "",
             };
+        case "SHOW_FILTER":
+            return { ...state, showFilter: !action.payload };
         default:
             break;
     }

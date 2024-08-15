@@ -25,7 +25,7 @@ const SingleProduct = ({ data }) => {
                     </div>
 
                     <span className="text-sm text-gray-600">
-                        {data.fastDelivery ? ( 
+                        {data.fastDelivery ? (
                             <span>(F)</span>
                             // <img src="icon/fast.svg" alt="Fast delivery" className="w-5 text-green-50" />
                         ) : (

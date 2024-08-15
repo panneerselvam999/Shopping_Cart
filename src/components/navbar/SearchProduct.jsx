@@ -16,7 +16,7 @@ const SearchProduct = () => {
                     className="focus:shadow-outline w-full appearance-none rounded-md border-2 border-gray-300 px-3 py-2 pl-10 leading-tight text-gray-800 transition-colors hover:border-gray-400 focus:border-purple-600 focus:outline-none focus:ring-purple-600"
                     id="search"
                     type="text"
-                    placeholder="Search a product"
+                    placeholder="Search"
                     value={productState.searchQuery != null ? productState.searchQuery : ""}
                     onChange={(e) =>
                         productDispatch({

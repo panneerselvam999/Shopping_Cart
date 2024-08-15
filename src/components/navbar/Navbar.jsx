@@ -16,11 +16,11 @@ const Navbar = () => {
     return (
         <nav className='flex  bg-gray-800 text-white justify-between items-center px-10 py-3 fixed top-0 left-0 z-10 w-full'>
 
-            <div>
-                <Link to={"/"} className="hidden sm:block">
+            <div className=" flex flex-row-reverse items-center">
+                <Link to={"/"} className="hidden md:block">
                     Shopping Cart
                 </Link>
-                <Link to={"/"} className="block pr-4 sm:hidden" onClick={
+                <Link to={"/"} className="block pr-4 xl:hidden" onClick={
                     // () => console.log("show filters")
                     () => productDispatch({
                         type: "SHOW_FILTER",

@@ -7,7 +7,7 @@ import Cart from "./components/cart/Cart";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className=" relative">
+      <div className="relative">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

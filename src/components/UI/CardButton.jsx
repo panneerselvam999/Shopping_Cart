@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const CardButton = ({ color, cartStatus }) => {
   return (
@@ -8,6 +8,11 @@ const CardButton = ({ color, cartStatus }) => {
       </button>
     </div>
   );
+};
+
+CardButton.propTypes = {
+  color: PropTypes.string.isRequired,
+  cartStatus: PropTypes.bool.isRequired,
 };
 
 export default CardButton;

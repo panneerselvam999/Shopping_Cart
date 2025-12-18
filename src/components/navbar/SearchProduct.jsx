@@ -1,4 +1,3 @@
-import React from "react";
 import { CartState } from "../../context/Context";
 
 const SearchProduct = () => {
@@ -10,16 +9,14 @@ const SearchProduct = () => {
   };
 
   return (
-    <div>
+    <div className="md:w-[250px] lg:w-[400px]">
       <div className="relative">
         <input
-          className="focus:shadow-outline w-full appearance-none rounded-md border-2 border-gray-300 px-3 py-2 pl-10 leading-tight text-gray-800 transition-colors hover:border-gray-400 focus:border-purple-600 focus:outline-none focus:ring-purple-600"
+          className="w-full rounded-2xl border-0 bg-gray-100 px-4 py-2.5 pl-11 text-sm font-medium text-gray-900 transition-all placeholder:text-gray-500 focus:bg-white focus:ring-2 focus:ring-primary-500"
           id="search"
           type="text"
-          placeholder="Search"
-          value={
-            productState.searchQuery != null ? productState.searchQuery : ""
-          }
+          placeholder="Search products..."
+          value={productState.searchQuery || ""}
           onChange={(e) =>
             productDispatch({
               type: "FILTER_BY_SEARCH",
@@ -27,7 +24,7 @@ const SearchProduct = () => {
             })
           }
         />
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 text-gray-400"
@@ -43,25 +40,27 @@ const SearchProduct = () => {
             />
           </svg>
         </div>
-        <div
-          className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3"
-          onClick={clearSearchBar}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-gray-400 hover:text-gray-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {productState.searchQuery && (
+          <div
+            className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3"
+            onClick={clearSearchBar}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-gray-400 hover:text-gray-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
+        )}
       </div>
     </div>
   );

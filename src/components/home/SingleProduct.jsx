@@ -1,6 +1,6 @@
-import React from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { CartState } from "../../context/Context";
+import PropTypes from "prop-types";
 
 const SingleProduct = ({ data }) => {
   const {
@@ -9,80 +9,91 @@ const SingleProduct = ({ data }) => {
   } = CartState();
 
   return (
-    <div className="flex flex-col justify-between rounded-xl bg-gray-100 p-2">
-      <div>
+    <div className="group flex flex-col justify-between rounded-2xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="relative overflow-hidden rounded-xl">
         <img
           src={data.image}
           alt={data.name}
-          className="aspect-video w-full rounded-lg"
+          className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
+        {data.fastDelivery && (
+          <span className="absolute left-2 top-2 rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 backdrop-blur-sm">
+            Fast Delivery
+          </span>
+        )}
       </div>
-      <div className="mt-2 flex flex-col gap-2">
-        <div className="flex items-center gap-3">
-          <div>
-            <h3 className="text-lg font-bold">{data.name}</h3>
-            <span></span>
-          </div>
 
-          <span className="text-sm text-gray-600">
-            {data.fastDelivery ? (
-              <span>(F)</span>
-            ) : (
-              // <img src="icon/fast.svg" alt="Fast delivery" className="w-5 text-green-50" />
-              <span>(S)</span>
-              // <img src="icon/slow.svg" alt="Slow delivery" className="w-5 text-red-500" />
-            )}
+      <div className="mt-4 flex flex-col gap-3">
+        <div className="flex items-start justify-between gap-2">
+          <h3
+            className="line-clamp-1 text-lg font-bold text-gray-800"
+            title={data.name}
+          >
+            {data.name}
+          </h3>
+          <span className="shrink-0 text-lg font-bold text-primary-600">
+            ₹{data.price.toString().split(".")[0]}
           </span>
         </div>
 
-        <div className="flex gap-2">
-          <div className="mt-1 flex gap-1">
+        <div className="flex items-center gap-2">
+          <div className="flex text-yellow-400">
             {[...Array(5)].map((_, i) => (
-              <span key={i} className="cursor-pointer">
+              <span key={i}>
                 {data.ratings > i ? <AiFillStar /> : <AiOutlineStar />}
               </span>
             ))}
           </div>
-          <div>({data.inStock} left)</div>
+          <span className="text-xs text-gray-500">({data.inStock} left)</span>
         </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-2xl font-semibold">
-              ₹ {data.price.split(".")[0]}
-            </span>
-          </div>
-          <div>
-            {cart.some((p) => p.id === data.id) ? (
-              <button
-                onClick={() =>
-                  dispatch({
-                    type: "REMOVE_FROM_CART",
-                    payload: data,
-                  })
-                }
-                className="mt-2 rounded-md bg-red-600 px-4 py-1 text-white hover:bg-red-700"
-              >
-                Remove from cart
-              </button>
-            ) : (
-              <button
-                disabled={!data.inStock}
-                onClick={() =>
-                  dispatch({
-                    type: "ADD_TO_CART",
-                    payload: data,
-                  })
-                }
-                className={`mt-2 rounded-md px-4 py-1 hover:bg-opacity-75 ${data.inStock ? "bg-green-600 text-white" : "bg-gray-400 text-black"}`}
-              >
-                {data.inStock ? "Add to Cart" : "Out of Stock"}
-              </button>
-            )}
-          </div>
+
+        <div className="mt-2">
+          {cart.some((p) => p.id === data.id) ? (
+            <button
+              onClick={() =>
+                dispatch({
+                  type: "REMOVE_FROM_CART",
+                  payload: data,
+                })
+              }
+              className="w-full rounded-xl bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-600 transition-colors hover:bg-red-100"
+            >
+              Remove from Cart
+            </button>
+          ) : (
+            <button
+              disabled={!data.inStock}
+              onClick={() =>
+                dispatch({
+                  type: "ADD_TO_CART",
+                  payload: data,
+                })
+              }
+              className={`w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                data.inStock
+                  ? "bg-primary-600 text-white shadow-lg shadow-primary-500/30 hover:bg-primary-700 hover:shadow-primary-500/40"
+                  : "cursor-not-allowed bg-gray-100 text-gray-400"
+              }`}
+            >
+              {data.inStock ? "Add to Cart" : "Out of Stock"}
+            </button>
+          )}
         </div>
       </div>
     </div>
   );
+};
+
+SingleProduct.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    inStock: PropTypes.number.isRequired,
+    fastDelivery: PropTypes.bool.isRequired,
+    ratings: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default SingleProduct;
